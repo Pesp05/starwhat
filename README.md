@@ -1,16 +1,7 @@
-# star_what
+# StarWhat
 
-A new Flutter project.
+Proyecto de fluter
 
-## Getting Started
+## Captura de pantalla de la página modelo
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Captura movie list flutter](https://github.com/user-attachments/assets/ec6f0afb-0a1f-49d9-b596-1e492f9c9334)
