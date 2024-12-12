@@ -22,9 +22,12 @@ class _PeopleScreenState extends State<PeopleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('People'),
+        title: Center(child: Text('Personajes', textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),)),
+        backgroundColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 19, 24, 32)).primary,
       ),
       body: FutureBuilder<PeopleResponse>(
+
         future: peopleResponse,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -51,10 +54,18 @@ class _PeopleScreenState extends State<PeopleScreen> {
   }
 
   Widget _buildPeopleList(PeopleResponse peopleResponse) {
+    
     return ListView.builder(
-        itemCount: peopleResponse.results!.length,
-        itemBuilder: (context, index) {
-          return Text(peopleResponse.results![index].name!);
-        });
+      itemCount: peopleResponse.results!.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            leading: Image.network('https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg'),
+            title: Text(peopleResponse.results![index].name!),
+          ),
+        );
+      },
+    );
+    
   }
 }

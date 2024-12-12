@@ -6,7 +6,7 @@ class PeopleResponse {
   int? count;
   String? next;
   dynamic previous;
-  List<Result>? results;
+  List<People>? results;
 
   PeopleResponse({this.count, this.next, this.previous, this.results});
 
@@ -16,7 +16,7 @@ class PeopleResponse {
       next: data['next'] as String?,
       previous: data['previous'] as dynamic,
       results: (data['results'] as List<dynamic>?)
-          ?.map((e) => Result.fromMap(e as Map<String, dynamic>))
+          ?.map((e) => People.fromMap(e as Map<String, dynamic>))
           .toList(),
     );
   }
