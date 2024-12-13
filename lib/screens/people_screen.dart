@@ -22,9 +22,9 @@ class _PeopleScreenState extends State<PeopleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Personajes', textAlign: TextAlign.center,
+        title: const Center(child: Text('Personajes', textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),)),
-        backgroundColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 19, 24, 32)).primary,
+        backgroundColor: const Color.fromARGB(255, 19, 24, 32)
       ),
       body: FutureBuilder<PeopleResponse>(
 
@@ -54,18 +54,35 @@ class _PeopleScreenState extends State<PeopleScreen> {
   }
 
   Widget _buildPeopleList(PeopleResponse peopleResponse) {
-    
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1 / 1.5, // Ajusta esta proporción para aumentar la altura
+      ),
       itemCount: peopleResponse.results!.length,
       itemBuilder: (context, index) {
         return Card(
-          child: ListTile(
-            leading: Image.network('https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg'),
-            title: Text(peopleResponse.results![index].name!),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: Image.network(
+                  'https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(peopleResponse.results![index].name!),
+              ),
+            ],
           ),
         );
       },
     );
-    
   }
 }
